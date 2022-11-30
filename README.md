@@ -16,11 +16,11 @@ print(vim.inspect(keymaps))
 ```lua
 { {
     path = "/path/to/file/lua/listdefined/test/example.lua",
-    row = 1,
+    start_row = 1,
     text = 'vim.keymap.set("n", "j", "gj")'
   }, {
     path = "/path/to/file/lua/listdefined/test/example.lua",
-    row = 5,
+    start_row = 5,
     text = 'vim.keymap.set("n", "k", "gk")'
   } }
 ```

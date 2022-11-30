@@ -11,7 +11,7 @@ keymap({paths})                                         *listdefined.keymap()*
     {paths} (string[]) file paths
 
   Return: ~
-    (table) keymap positions {path: string, row: number, text: string}[]
+    (table) keymap positions {path: string, start_row: number, text: string}[]
     (nil|string) error message
 
 autocmd({paths})                                       *listdefined.autocmd()*
@@ -22,7 +22,7 @@ autocmd({paths})                                       *listdefined.autocmd()*
     {paths} (string[]) file paths
 
   Return: ~
-    (table) autocmd positions {path: string, row: number, text: string}[]
+    (table) autocmd positions {path: string, start_row: number, text: string}[]
     (nil|string) error message
 
 ==============================================================================
@@ -40,11 +40,11 @@ EXAMPLES                                           *listdefined.nvim-EXAMPLES*
 >
   { {
       path = "/path/to/file/lua/listdefined/test/example.lua",
-      row = 1,
+      start_row = 1,
       text = 'vim.keymap.set("n", "j", "gj")'
     }, {
       path = "/path/to/file/lua/listdefined/test/example.lua",
-      row = 5,
+      start_row = 5,
       text = 'vim.keymap.set("n", "k", "gk")'
     } }
 <

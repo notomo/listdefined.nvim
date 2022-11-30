@@ -42,7 +42,7 @@ function M.collect(path, query)
     table.insert(items, {
       text = vim.treesitter.get_node_text(captured.keymap, str),
       path = path,
-      row = start_row + 1,
+      start_row = start_row + 1,
     })
   end
   return items

@@ -33,12 +33,12 @@ vim.keymap.set("n", "j", "gj")
     local got = listdefined.keymap(paths)
     local want = {
       {
-        row = 1,
+        start_row = 1,
         path = helper.test_data.full_path .. "test1.lua",
         text = [=[vim.keymap.set("n", "j", "gj")]=],
       },
       {
-        row = 3,
+        start_row = 3,
         path = helper.test_data.full_path .. "test1.lua",
         text = [=[
 vim.keymap.set(
@@ -48,7 +48,7 @@ vim.keymap.set(
 )]=],
       },
       {
-        row = 2,
+        start_row = 2,
         path = helper.test_data.full_path .. "test2.lua",
         text = [=[vim.keymap.set("n", "j", "gj")]=],
       },
@@ -86,7 +86,7 @@ vim.api.nvim_create_autocmd({ "SwapExists" }, {
     local got = listdefined.autocmd(paths)
     local want = {
       {
-        row = 1,
+        start_row = 1,
         path = helper.test_data.full_path .. "test1.lua",
         text = [=[
 vim.api.nvim_create_autocmd({ "SwapExists" }, {
