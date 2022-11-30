@@ -1,0 +1,41 @@
+*listdefined.nvim.txt*
+
+==============================================================================
+Lua module: listdefined                         *listdefined.nvim-listdefined*
+
+keymap({paths})                                         *listdefined.keymap()*
+  Returns keymap positions defined in the files.
+
+  Parameters: ~
+    {paths} (string[]) file paths
+
+  Return: ~
+    (table) keymap positions {path: string, row: number, text: string}[]
+    (nil|string) error message
+
+==============================================================================
+EXAMPLES                                           *listdefined.nvim-EXAMPLES*
+
+>
+  local paths = vim.fn.glob("lua/listdefined/test/example.lua", false, true)
+  local keymaps, err = require("listdefined").keymap(paths)
+  if err then
+    return nil, err
+  end
+  print(vim.inspect(keymaps))
+<
+
+>
+  { {
+      path = "/path/to/file/lua/listdefined/test/example.lua",
+      row = 1,
+      text = 'vim.keymap.set("n", "j", "gj")'
+    }, {
+      path = "/path/to/file/lua/listdefined/test/example.lua",
+      row = 5,
+      text = 'vim.keymap.set("n", "k", "gk")'
+    } }
+<
+
+==============================================================================
+vim:tw=78:ts=8:ft=help
