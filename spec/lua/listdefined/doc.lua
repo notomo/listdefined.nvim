@@ -37,9 +37,7 @@ local gen_readme = function()
   local content = ([[
 # %s
 
-functions to collect the following:
-
-- vim.keymap.set()
+This plugin provides functions to collect defined positions.
 
 ## Example
 

@@ -23,4 +23,9 @@ function M.keymap(paths)
   return collect(handler, paths)
 end
 
+function M.autocmd(paths)
+  local handler = require("listdefined.handler.autocmd")
+  return collect(handler, paths)
+end
+
 return M

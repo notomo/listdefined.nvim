@@ -62,3 +62,41 @@ vim.keymap.set(
     assert.equal(want_err, got_err)
   end)
 end)
+
+describe("listdefined.autocmd()", function()
+  before_each(helper.before_each)
+  after_each(helper.after_each)
+
+  it("returns autocmd defined positions", function()
+    helper.test_data:create_file(
+      "test1.lua",
+      [=[
+vim.api.nvim_create_autocmd({ "SwapExists" }, {
+  pattern = {"*"},
+  callback = function()
+    print("swap")
+  end
+})
+]=]
+    )
+
+    local paths = {
+      helper.test_data.full_path .. "test1.lua",
+    }
+    local got = listdefined.autocmd(paths)
+    local want = {
+      {
+        row = 1,
+        path = helper.test_data.full_path .. "test1.lua",
+        text = [=[
+vim.api.nvim_create_autocmd({ "SwapExists" }, {
+  pattern = {"*"},
+  callback = function()
+    print("swap")
+  end
+})]=],
+      },
+    }
+    assert.is_same(want, got)
+  end)
+end)

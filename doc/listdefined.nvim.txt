@@ -5,12 +5,24 @@ Lua module: listdefined                         *listdefined.nvim-listdefined*
 
 keymap({paths})                                         *listdefined.keymap()*
   Returns keymap positions defined in the files.
+  This function targets |vim.keymap.set()|.
 
   Parameters: ~
     {paths} (string[]) file paths
 
   Return: ~
     (table) keymap positions {path: string, row: number, text: string}[]
+    (nil|string) error message
+
+autocmd({paths})                                       *listdefined.autocmd()*
+  Returns autocmd positions defined in the files.
+  This function targets |vim.api.nvim_create_autocmd()|.
+
+  Parameters: ~
+    {paths} (string[]) file paths
+
+  Return: ~
+    (table) autocmd positions {path: string, row: number, text: string}[]
     (nil|string) error message
 
 ==============================================================================

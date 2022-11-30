@@ -1,8 +1,6 @@
 # listdefined.nvim
 
-functions to collect the following:
-
-- vim.keymap.set()
+This plugin provides functions to collect defined positions.
 
 ## Example
 
