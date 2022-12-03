@@ -18,4 +18,13 @@ function M.autocmd(paths)
   return require("listdefined.command").autocmd(paths)
 end
 
+--- Returns highlight positions defined in the files.
+--- This function targets |vim.api.nvim_set_hl()|.
+--- @param paths string[]: file paths
+--- @return table: highlight positions {path: string, start_row: number, text: string}[]
+--- @return nil|string: error message
+function M.highlight(paths)
+  return require("listdefined.command").highlight(paths)
+end
+
 return M

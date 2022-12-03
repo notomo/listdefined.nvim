@@ -28,4 +28,9 @@ function M.autocmd(paths)
   return collect(handler, paths)
 end
 
+function M.highlight(paths)
+  local handler = require("listdefined.handler.highlight")
+  return collect(handler, paths)
+end
+
 return M

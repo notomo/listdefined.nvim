@@ -100,3 +100,30 @@ vim.api.nvim_create_autocmd({ "SwapExists" }, {
     assert.is_same(want, got)
   end)
 end)
+
+describe("listdefined.highlight()", function()
+  before_each(helper.before_each)
+  after_each(helper.after_each)
+
+  it("returns highlight defined positions", function()
+    helper.test_data:create_file(
+      "test1.lua",
+      [=[
+vim.api.nvim_set_hl(0, "helpExample", { bold = true })
+]=]
+    )
+
+    local paths = {
+      helper.test_data.full_path .. "test1.lua",
+    }
+    local got = listdefined.highlight(paths)
+    local want = {
+      {
+        start_row = 1,
+        path = helper.test_data.full_path .. "test1.lua",
+        text = [=[vim.api.nvim_set_hl(0, "helpExample", { bold = true })]=],
+      },
+    }
+    assert.is_same(want, got)
+  end)
+end)
