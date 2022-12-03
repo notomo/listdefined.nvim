@@ -24,26 +24,24 @@ function M.build_query()
   )
 end
 
+local tslib = require("listdefined.lib.treesitter")
+local response = require("listdefined.response")
 function M.collect(path, query)
   local str, err = require("listdefined.lib.file").read_all(path)
   if err then
     return nil, err
   end
 
-  local root = require("listdefined.lib.treesitter").get_first_tree_root(str, "lua")
+  local root = tslib.get_first_tree_root(str, "lua")
   local items = {}
   for _, match in query:iter_matches(root, str, 0, -1) do
-    local captured = require("listdefined.lib.treesitter").get_captures(match, query, {
+    local captured = tslib.get_captures(match, query, {
       ["keymap"] = function(tbl, tsnode)
-        tbl.keymap = tsnode
+        tbl.node = tsnode
       end,
     })
-    local start_row = captured.keymap:start()
-    table.insert(items, {
-      text = vim.treesitter.get_node_text(captured.keymap, str),
-      path = path,
-      start_row = start_row + 1,
-    })
+    local item = response.new_item(captured.node, path, str)
+    table.insert(items, item)
   end
   return items
 end

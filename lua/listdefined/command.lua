@@ -1,10 +1,10 @@
 local M = {}
 
-local collect = function(handler, paths)
+function M.collect(paths, name)
   vim.validate({
     paths = { paths, "table" },
   })
-
+  local handler = require("listdefined.vendor.misclib.module").find("listdefined.handler." .. name)
   local query = handler.build_query()
   local all_items = {}
   for _, path in ipairs(paths) do
@@ -16,21 +16,6 @@ local collect = function(handler, paths)
     vim.list_extend(all_items, items)
   end
   return all_items, nil
-end
-
-function M.keymap(paths)
-  local handler = require("listdefined.handler.keymap")
-  return collect(handler, paths)
-end
-
-function M.autocmd(paths)
-  local handler = require("listdefined.handler.autocmd")
-  return collect(handler, paths)
-end
-
-function M.highlight(paths)
-  local handler = require("listdefined.handler.highlight")
-  return collect(handler, paths)
 end
 
 return M

@@ -6,7 +6,7 @@ local M = {}
 --- @return table: keymap positions {path: string, start_row: number, text: string}[]
 --- @return nil|string: error message
 function M.keymap(paths)
-  return require("listdefined.command").keymap(paths)
+  return require("listdefined.command").collect(paths, "keymap")
 end
 
 --- Returns autocmd positions defined in the files.
@@ -15,7 +15,7 @@ end
 --- @return table: autocmd positions {path: string, start_row: number, text: string}[]
 --- @return nil|string: error message
 function M.autocmd(paths)
-  return require("listdefined.command").autocmd(paths)
+  return require("listdefined.command").collect(paths, "autocmd")
 end
 
 --- Returns highlight positions defined in the files.
@@ -24,7 +24,7 @@ end
 --- @return table: highlight positions {path: string, start_row: number, text: string}[]
 --- @return nil|string: error message
 function M.highlight(paths)
-  return require("listdefined.command").highlight(paths)
+  return require("listdefined.command").collect(paths, "highlight")
 end
 
 return M
