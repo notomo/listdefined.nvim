@@ -18,6 +18,15 @@ function M.autocmd(paths)
   return require("listdefined.command").collect(paths, "autocmd")
 end
 
+--- Returns autocmd group positions defined in the files.
+--- This function targets |vim.api.nvim_create_augroup()|.
+--- @param paths string[]: file paths
+--- @return table: autocmd group positions {path: string, start_row: number, text: string}[]
+--- @return nil|string: error message
+function M.autocmd_group(paths)
+  return require("listdefined.command").collect(paths, "autocmd_group")
+end
+
 --- Returns highlight positions defined in the files.
 --- This function targets |vim.api.nvim_set_hl()|.
 --- @param paths string[]: file paths

@@ -25,6 +25,17 @@ autocmd({paths})                                       *listdefined.autocmd()*
     (table) autocmd positions {path: string, start_row: number, text: string}[]
     (nil|string) error message
 
+autocmd_group({paths})                           *listdefined.autocmd_group()*
+  Returns autocmd group positions defined in the files.
+  This function targets |vim.api.nvim_create_augroup()|.
+
+  Parameters: ~
+    {paths} (string[]) file paths
+
+  Return: ~
+    (table) autocmd group positions {path: string, start_row: number, text: string}[]
+    (nil|string) error message
+
 highlight({paths})                                   *listdefined.highlight()*
   Returns highlight positions defined in the files.
   This function targets |vim.api.nvim_set_hl()|.
