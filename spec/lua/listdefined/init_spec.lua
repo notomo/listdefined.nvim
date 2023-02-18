@@ -34,12 +34,12 @@ vim.keymap.set("n", "j", "gj")
     local want = {
       {
         start_row = 1,
-        path = helper.test_data.full_path .. "test1.lua",
+        path = file_path1,
         text = [=[vim.keymap.set("n", "j", "gj")]=],
       },
       {
         start_row = 3,
-        path = helper.test_data.full_path .. "test1.lua",
+        path = file_path1,
         text = [=[
 vim.keymap.set(
   [[n]],
@@ -49,7 +49,7 @@ vim.keymap.set(
       },
       {
         start_row = 2,
-        path = helper.test_data.full_path .. "test2.lua",
+        path = file_path2,
         text = [=[vim.keymap.set("n", "j", "gj")]=],
       },
     }
@@ -85,7 +85,7 @@ vim.api.nvim_create_autocmd({ "SwapExists" }, {
     local want = {
       {
         start_row = 1,
-        path = helper.test_data.full_path .. "test1.lua",
+        path = file_path,
         text = [=[
 vim.api.nvim_create_autocmd({ "SwapExists" }, {
   pattern = {"*"},
@@ -116,7 +116,7 @@ vim.api.nvim_create_augroup("test", {})
     local want = {
       {
         start_row = 1,
-        path = helper.test_data.full_path .. "test1.lua",
+        path = file_path,
         text = [=[
 vim.api.nvim_create_augroup("test", {})]=],
       },
@@ -142,7 +142,7 @@ vim.api.nvim_set_hl(0, "helpExample", { bold = true })
     local want = {
       {
         start_row = 1,
-        path = helper.test_data.full_path .. "test1.lua",
+        path = file_path,
         text = [=[vim.api.nvim_set_hl(0, "helpExample", { bold = true })]=],
       },
     }
