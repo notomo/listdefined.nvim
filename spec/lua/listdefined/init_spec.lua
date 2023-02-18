@@ -6,7 +6,7 @@ describe("listdefined.keymap()", function()
   after_each(helper.after_each)
 
   it("returns keymap defined positions", function()
-    helper.test_data:create_file(
+    local file_path1 = helper.test_data:create_file(
       "test1.lua",
       [=[
 vim.keymap.set("n", "j", "gj")
@@ -18,7 +18,7 @@ vim.keymap.set(
 )
 ]=]
     )
-    helper.test_data:create_file(
+    local file_path2 = helper.test_data:create_file(
       "test2.lua",
       [=[
 
@@ -27,8 +27,8 @@ vim.keymap.set("n", "j", "gj")
     )
 
     local paths = {
-      helper.test_data.full_path .. "test1.lua",
-      helper.test_data.full_path .. "test2.lua",
+      file_path1,
+      file_path2,
     }
     local got = listdefined.keymap(paths)
     local want = {
@@ -68,7 +68,7 @@ describe("listdefined.autocmd()", function()
   after_each(helper.after_each)
 
   it("returns autocmd defined positions", function()
-    helper.test_data:create_file(
+    local file_path = helper.test_data:create_file(
       "test1.lua",
       [=[
 vim.api.nvim_create_autocmd({ "SwapExists" }, {
@@ -80,9 +80,7 @@ vim.api.nvim_create_autocmd({ "SwapExists" }, {
 ]=]
     )
 
-    local paths = {
-      helper.test_data.full_path .. "test1.lua",
-    }
+    local paths = { file_path }
     local got = listdefined.autocmd(paths)
     local want = {
       {
@@ -106,16 +104,14 @@ describe("listdefined.autocmd_group()", function()
   after_each(helper.after_each)
 
   it("returns autocmd group defined positions", function()
-    helper.test_data:create_file(
+    local file_path = helper.test_data:create_file(
       "test1.lua",
       [=[
 vim.api.nvim_create_augroup("test", {})
 ]=]
     )
 
-    local paths = {
-      helper.test_data.full_path .. "test1.lua",
-    }
+    local paths = { file_path }
     local got = listdefined.autocmd_group(paths)
     local want = {
       {
@@ -134,16 +130,14 @@ describe("listdefined.highlight()", function()
   after_each(helper.after_each)
 
   it("returns highlight defined positions", function()
-    helper.test_data:create_file(
+    local file_path = helper.test_data:create_file(
       "test1.lua",
       [=[
 vim.api.nvim_set_hl(0, "helpExample", { bold = true })
 ]=]
     )
 
-    local paths = {
-      helper.test_data.full_path .. "test1.lua",
-    }
+    local paths = { file_path }
     local got = listdefined.highlight(paths)
     local want = {
       {
