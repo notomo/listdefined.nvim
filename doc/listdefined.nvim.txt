@@ -11,7 +11,7 @@ keymap({paths})                                         *listdefined.keymap()*
     {paths} (string[]) file paths
 
   Return: ~
-    (table) keymap positions {path: string, start_row: number, text: string}[]
+    (ListdefinedItem[]) keymap positions |ListdefinedItem|
     (nil|string) error message
 
 autocmd({paths})                                       *listdefined.autocmd()*
@@ -22,7 +22,7 @@ autocmd({paths})                                       *listdefined.autocmd()*
     {paths} (string[]) file paths
 
   Return: ~
-    (table) autocmd positions {path: string, start_row: number, text: string}[]
+    (ListdefinedItem[]) autocmd positions |ListdefinedItem|
     (nil|string) error message
 
 autocmd_group({paths})                           *listdefined.autocmd_group()*
@@ -33,7 +33,7 @@ autocmd_group({paths})                           *listdefined.autocmd_group()*
     {paths} (string[]) file paths
 
   Return: ~
-    (table) autocmd group positions {path: string, start_row: number, text: string}[]
+    (ListdefinedItem[]) autocmd group positions |ListdefinedItem|
     (nil|string) error message
 
 highlight({paths})                                   *listdefined.highlight()*
@@ -44,8 +44,17 @@ highlight({paths})                                   *listdefined.highlight()*
     {paths} (string[]) file paths
 
   Return: ~
-    (table) highlight positions {path: string, start_row: number, text: string}[]
+    (ListdefinedItem[]) highlight positions |ListdefinedItem|
     (nil|string) error message
+
+==============================================================================
+STRUCTURE                                         *listdefined.nvim-STRUCTURE*
+
+ListdefinedItem                                              *ListdefinedItem*
+
+- {path} (string) defined file path
+- {start_row} (integer) defined position start row
+- {text} (string)
 
 ==============================================================================
 EXAMPLES                                           *listdefined.nvim-EXAMPLES*
