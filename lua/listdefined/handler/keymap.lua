@@ -1,7 +1,7 @@
 local M = {}
 
 function M.build_query()
-  return vim.treesitter.query.parse_query(
+  return vim.treesitter.query.parse(
     "lua",
     [[
 (
