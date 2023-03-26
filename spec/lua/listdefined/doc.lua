@@ -3,7 +3,7 @@ local plugin_name = vim.env.PLUGIN_NAME
 local full_plugin_name = plugin_name .. ".nvim"
 
 local example_path = ("./spec/lua/%s/example.lua"):format(plugin_name)
-local example_output = vim.api.nvim_exec("luafile " .. example_path, true)
+local example_output = vim.api.nvim_exec2("luafile " .. example_path, { output = true }).output
 example_output = example_output:gsub(vim.fn.fnamemodify(".", ":p"), "/path/to/file/")
 
 require("genvdoc").generate(full_plugin_name, {
