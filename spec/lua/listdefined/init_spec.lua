@@ -57,8 +57,8 @@ vim.keymap.set(
   end)
 
   it("returns error if paths include invalid path", function()
-    local _, got_err = listdefined.keymap({ helper.test_data.full_path .. "not_found_path" })
-    local want_err = ("cannot read: %s"):format(helper.test_data.full_path .. "not_found_path")
+    local _, got_err = listdefined.keymap({ helper.test_data:path("not_found_path") })
+    local want_err = ("cannot read: %s"):format(helper.test_data:path("not_found_path"))
     assert.equal(want_err, got_err)
   end)
 end)
