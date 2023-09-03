@@ -41,4 +41,13 @@ function M.highlight(paths)
   return require("listdefined.command").collect(paths, "highlight")
 end
 
+--- Returns command positions defined in the files.
+--- This function targets |vim.api.nvim_create_user_command()| and |vim.api.nvim_buf_create_user_command()|.
+--- @param paths string[]: file paths
+--- @return ListdefinedItem[] # command positions |ListdefinedItem|
+--- @return nil|string # error message
+function M.command(paths)
+  return require("listdefined.command").collect(paths, "command")
+end
+
 return M

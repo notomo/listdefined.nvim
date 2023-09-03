@@ -149,3 +149,43 @@ vim.api.nvim_set_hl(0, "helpExample", { bold = true })
     assert.is_same(want, got)
   end)
 end)
+
+describe("listdefined.command()", function()
+  before_each(helper.before_each)
+  after_each(helper.after_each)
+
+  it("returns command defined positions", function()
+    local file_path = helper.test_data:create_file(
+      "test1.lua",
+      [=[
+vim.api.nvim_create_user_command("Test", function()
+  return nil
+end, {})
+
+vim.api.nvim_buf_create_user_command(0, "TestBuffer", function()
+  return nil
+end, {})
+]=]
+    )
+
+    local paths = { file_path }
+    local got = listdefined.command(paths)
+    local want = {
+      {
+        start_row = 1,
+        path = file_path,
+        text = [=[vim.api.nvim_create_user_command("Test", function()
+  return nil
+end, {})]=],
+      },
+      {
+        start_row = 5,
+        path = file_path,
+        text = [=[vim.api.nvim_buf_create_user_command(0, "TestBuffer", function()
+  return nil
+end, {})]=],
+      },
+    }
+    assert.is_same(want, got)
+  end)
+end)

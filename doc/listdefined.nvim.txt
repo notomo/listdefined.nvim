@@ -47,6 +47,17 @@ highlight({paths})                                   *listdefined.highlight()*
     (ListdefinedItem[]) highlight positions |ListdefinedItem|
     (nil|string) error message
 
+command({paths})                                       *listdefined.command()*
+  Returns command positions defined in the files.
+  This function targets |vim.api.nvim_create_user_command()| and |vim.api.nvim_buf_create_user_command()|.
+
+  Parameters: ~
+    {paths} (string[]) file paths
+
+  Return: ~
+    (ListdefinedItem[]) command positions |ListdefinedItem|
+    (nil|string) error message
+
 ==============================================================================
 STRUCTURE                                         *listdefined.nvim-STRUCTURE*
 
