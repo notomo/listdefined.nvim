@@ -9,7 +9,6 @@ local M = {}
 --- This function targets |vim.keymap.set()|.
 --- @param paths string[]: file paths
 --- @return ListdefinedItem[] # keymap positions |ListdefinedItem|
---- @return nil|string # error message
 function M.keymap(paths)
   return require("listdefined.command").collect(paths, "keymap")
 end
@@ -18,7 +17,6 @@ end
 --- This function targets |vim.api.nvim_create_autocmd()|.
 --- @param paths string[]: file paths
 --- @return ListdefinedItem[] # autocmd positions |ListdefinedItem|
---- @return nil|string # error message
 function M.autocmd(paths)
   return require("listdefined.command").collect(paths, "autocmd")
 end
@@ -27,7 +25,6 @@ end
 --- This function targets |vim.api.nvim_create_augroup()|.
 --- @param paths string[]: file paths
 --- @return ListdefinedItem[] # autocmd group positions |ListdefinedItem|
---- @return nil|string # error message
 function M.autocmd_group(paths)
   return require("listdefined.command").collect(paths, "autocmd_group")
 end
@@ -36,7 +33,6 @@ end
 --- This function targets |vim.api.nvim_set_hl()|.
 --- @param paths string[]: file paths
 --- @return ListdefinedItem[] # highlight positions |ListdefinedItem|
---- @return nil|string # error message
 function M.highlight(paths)
   return require("listdefined.command").collect(paths, "highlight")
 end
@@ -45,7 +41,6 @@ end
 --- This function targets |vim.api.nvim_create_user_command()| and |vim.api.nvim_buf_create_user_command()|.
 --- @param paths string[]: file paths
 --- @return ListdefinedItem[] # command positions |ListdefinedItem|
---- @return nil|string # error message
 function M.command(paths)
   return require("listdefined.command").collect(paths, "command")
 end

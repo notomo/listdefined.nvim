@@ -12,7 +12,6 @@ keymap({paths})                                         *listdefined.keymap()*
 
   Return: ~
     (ListdefinedItem[]) keymap positions |ListdefinedItem|
-    (nil|string) error message
 
 autocmd({paths})                                       *listdefined.autocmd()*
   Returns autocmd positions defined in the files.
@@ -23,7 +22,6 @@ autocmd({paths})                                       *listdefined.autocmd()*
 
   Return: ~
     (ListdefinedItem[]) autocmd positions |ListdefinedItem|
-    (nil|string) error message
 
 autocmd_group({paths})                           *listdefined.autocmd_group()*
   Returns autocmd group positions defined in the files.
@@ -34,7 +32,6 @@ autocmd_group({paths})                           *listdefined.autocmd_group()*
 
   Return: ~
     (ListdefinedItem[]) autocmd group positions |ListdefinedItem|
-    (nil|string) error message
 
 highlight({paths})                                   *listdefined.highlight()*
   Returns highlight positions defined in the files.
@@ -45,7 +42,6 @@ highlight({paths})                                   *listdefined.highlight()*
 
   Return: ~
     (ListdefinedItem[]) highlight positions |ListdefinedItem|
-    (nil|string) error message
 
 command({paths})                                       *listdefined.command()*
   Returns command positions defined in the files.
@@ -56,7 +52,6 @@ command({paths})                                       *listdefined.command()*
 
   Return: ~
     (ListdefinedItem[]) command positions |ListdefinedItem|
-    (nil|string) error message
 
 ==============================================================================
 STRUCTURE                                         *listdefined.nvim-STRUCTURE*

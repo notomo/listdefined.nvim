@@ -9,13 +9,14 @@ function M.collect(paths, name)
   local all_items = {}
   for _, path in ipairs(paths) do
     local absolute_path = vim.fn.fnamemodify(path, ":p")
-    local items, err = handler.collect(absolute_path, query)
-    if err then
-      return nil, err
+    local items = handler.collect(absolute_path, query)
+    if type(items) == "string" then
+      local err = items
+      error("[listdefined] " .. err)
     end
     vim.list_extend(all_items, items)
   end
-  return all_items, nil
+  return all_items
 end
 
 return M

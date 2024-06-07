@@ -56,10 +56,11 @@ vim.keymap.set(
     assert.is_same(want, got)
   end)
 
-  it("returns error if paths include invalid path", function()
-    local _, got_err = listdefined.keymap({ helper.test_data:path("not_found_path") })
-    local want_err = ("cannot read: %s"):format(helper.test_data:path("not_found_path"))
-    assert.equal(want_err, got_err)
+  it("raises error if paths include invalid path", function()
+    local ok, got_err = pcall(listdefined.keymap, { helper.test_data:path("not_found_path") })
+    local want_err = ("%%[listdefined%%] cannot read: %s"):format(helper.test_data:path("not_found_path"))
+    assert.is_false(ok)
+    assert.matches(want_err, got_err)
   end)
 end)
 

@@ -27,9 +27,10 @@ end
 local tslib = require("listdefined.lib.treesitter")
 local response = require("listdefined.response")
 function M.collect(path, query)
-  local str, err = require("listdefined.lib.file").read_all(path)
-  if err then
-    return nil, err
+  local str = require("listdefined.lib.file").read_all(path)
+  if type(str) == "table" then
+    local err = str
+    return err.message
   end
 
   local root = tslib.get_first_tree_root(str, "lua")
