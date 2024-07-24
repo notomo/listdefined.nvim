@@ -30,17 +30,18 @@ function M.collect(path, query)
   end
 
   local root = tslib.get_first_tree_root(str, "lua")
-  local items = {}
-  for _, match in query:iter_matches(root, str, 0, -1) do
-    local captured = tslib.get_captures(match, query, {
-      ["autocmd_group"] = function(tbl, tsnode)
-        tbl.node = tsnode
-      end,
-    })
-    local item = response.new_item(captured.node, path, str)
-    table.insert(items, item)
-  end
-  return items
+
+  return vim
+    .iter(query:iter_matches(root, str, 0, -1))
+    :map(function(_, match)
+      local captured = tslib.get_captures(match, query, {
+        ["autocmd_group"] = function(tbl, tsnode)
+          tbl.node = tsnode
+        end,
+      })
+      return response.new_item(captured.node, path, str)
+    end)
+    :totable()
 end
 
 return M
