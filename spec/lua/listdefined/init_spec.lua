@@ -1,5 +1,6 @@
 local helper = require("listdefined.test.helper")
 local listdefined = helper.require("listdefined")
+local assert = require("assertlib").typed(assert)
 
 describe("listdefined.keymap()", function()
   before_each(helper.before_each)
@@ -53,14 +54,14 @@ vim.keymap.set(
         text = [=[vim.keymap.set("n", "j", "gj")]=],
       },
     }
-    assert.is_same(want, got)
+    assert.same(want, got)
   end)
 
   it("raises error if paths include invalid path", function()
     local ok, got_err = pcall(listdefined.keymap, { helper.test_data:path("not_found_path") })
     local want_err = ("%%[listdefined%%] cannot read: %s"):format(helper.test_data:path("not_found_path"))
     assert.is_false(ok)
-    assert.matches(want_err, got_err)
+    assert.match(want_err, got_err)
   end)
 end)
 
@@ -96,7 +97,7 @@ vim.api.nvim_create_autocmd({ "SwapExists" }, {
 })]=],
       },
     }
-    assert.is_same(want, got)
+    assert.same(want, got)
   end)
 end)
 
@@ -122,7 +123,7 @@ vim.api.nvim_create_augroup("test", {})
 vim.api.nvim_create_augroup("test", {})]=],
       },
     }
-    assert.is_same(want, got)
+    assert.same(want, got)
   end)
 end)
 
@@ -147,7 +148,7 @@ vim.api.nvim_set_hl(0, "helpExample", { bold = true })
         text = [=[vim.api.nvim_set_hl(0, "helpExample", { bold = true })]=],
       },
     }
-    assert.is_same(want, got)
+    assert.same(want, got)
   end)
 end)
 
@@ -187,6 +188,6 @@ end, {})]=],
 end, {})]=],
       },
     }
-    assert.is_same(want, got)
+    assert.same(want, got)
   end)
 end)
