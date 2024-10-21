@@ -1,10 +1,8 @@
 local M = {}
 
+--- @param paths string[]
+--- @param name string
 function M.collect(paths, name)
-  vim.validate({
-    paths = { paths, "table" },
-  })
-
   local handler = require("listdefined.vendor.misclib.module").find("listdefined.handler." .. name)
   local query = handler.build_query()
 
