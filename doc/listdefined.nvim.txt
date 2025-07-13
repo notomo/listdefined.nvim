@@ -53,6 +53,16 @@ command({paths})                                       *listdefined.command()*
   Return: ~
     (ListdefinedItem[]) command positions |ListdefinedItem|
 
+search({paths}, {query_text})                           *listdefined.search()*
+  Returns `@target` positions captured by treesitter query in the files.
+
+  Parameters: ~
+    {paths} (string[]) file paths
+    {query_text} (string) treesitter query
+
+  Return: ~
+    (ListdefinedItem[]) |ListdefinedItem|
+
 ==============================================================================
 STRUCTURE                                         *listdefined.nvim-STRUCTURE*
 

@@ -191,3 +191,41 @@ end, {})]=],
     assert.same(want, got)
   end)
 end)
+
+describe("listdefined.search()", function()
+  before_each(helper.before_each)
+  after_each(helper.after_each)
+
+  it("returns defined positions by query", function()
+    local file_path = helper.test_data:create_file(
+      "test1.lua",
+      [[
+local M = {}
+
+function M.test()
+  return "hello"
+end
+
+return M
+]]
+    )
+
+    local paths = { file_path }
+    local got = listdefined.search(
+      paths,
+      [[
+(
+  function_declaration name: (_) @target
+)
+]]
+    )
+    local want = {
+      {
+        start_row = 3,
+        path = file_path,
+        text = "M.test",
+      },
+    }
+    assert.same(want, got)
+  end)
+end)

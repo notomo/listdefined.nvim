@@ -45,4 +45,12 @@ function M.command(paths)
   return require("listdefined.command").collect(paths, "command")
 end
 
+--- Returns `@target` positions captured by treesitter query in the files.
+--- @param paths string[]: file paths
+--- @param query_text string: treesitter query
+--- @return ListdefinedItem[] # |ListdefinedItem|
+function M.search(paths, query_text)
+  return require("listdefined.command").search(paths, query_text)
+end
+
 return M
