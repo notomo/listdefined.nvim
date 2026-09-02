@@ -14,7 +14,7 @@ function M.keymap(paths)
 end
 
 --- Returns autocmd positions defined in the files.
---- This function targets |vim.api.nvim_create_autocmd()|.
+--- This function targets |nvim_create_autocmd()|.
 --- @param paths string[]: file paths
 --- @return ListdefinedItem[] # autocmd positions |ListdefinedItem|
 function M.autocmd(paths)
@@ -22,7 +22,7 @@ function M.autocmd(paths)
 end
 
 --- Returns autocmd group positions defined in the files.
---- This function targets |vim.api.nvim_create_augroup()|.
+--- This function targets |nvim_create_augroup()|.
 --- @param paths string[]: file paths
 --- @return ListdefinedItem[] # autocmd group positions |ListdefinedItem|
 function M.autocmd_group(paths)
@@ -30,7 +30,7 @@ function M.autocmd_group(paths)
 end
 
 --- Returns highlight positions defined in the files.
---- This function targets |vim.api.nvim_set_hl()|.
+--- This function targets |nvim_set_hl()|.
 --- @param paths string[]: file paths
 --- @return ListdefinedItem[] # highlight positions |ListdefinedItem|
 function M.highlight(paths)
@@ -38,7 +38,7 @@ function M.highlight(paths)
 end
 
 --- Returns command positions defined in the files.
---- This function targets |vim.api.nvim_create_user_command()| and |vim.api.nvim_buf_create_user_command()|.
+--- This function targets |nvim_create_user_command()| and |nvim_buf_create_user_command()|.
 --- @param paths string[]: file paths
 --- @return ListdefinedItem[] # command positions |ListdefinedItem|
 function M.command(paths)
